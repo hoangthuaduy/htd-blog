@@ -1,6 +1,6 @@
 console.log("HTD Blog loaded successfully!");
 // Hiệu ứng hiện dần phần hero khi load trang
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     document.getElementById('hero').classList.add('visible');
     startTypingEffect();
 });
@@ -22,3 +22,13 @@ function startTypingEffect() {
 
     type();
 }
+
+// ScrollReveal hiệu ứng các section
+ScrollReveal().reveal('section', {
+    delay: 200,
+    distance: '50px',
+    duration: 800,
+    easing: 'ease-out',
+    origin: 'bottom',
+    reset: false
+});

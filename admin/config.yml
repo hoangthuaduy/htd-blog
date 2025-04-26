@@ -1,17 +1,16 @@
 backend:
   name: git-gateway
-  repo: hoangthuaduy/htd-blog
   branch: main
 
-media_folder: "assets/images/uploads"
-public_folder: "assets/images/public"
+media_folder: "assets/images/uploads" # Thư mục lưu ảnh thực tế trong repo
+public_folder: "/assets/images/public" # Đường public cho ảnh
 
 collections:
   - name: "blog"
     label: "Blog Posts"
     folder: "js/blog-posts"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}

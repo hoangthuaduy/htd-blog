@@ -106,6 +106,40 @@ footer {
 .read-more:hover {
     text-decoration: underline;
 }
+#blog-detail {
+    padding: 4rem 1rem;
+}
+
+#blog-detail .container {
+    max-width: 800px;
+    margin: auto;
+    background: #333;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#blog-detail h1 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: #00bfff;
+}
+
+#blog-detail p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #00bfff;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
 
 
 /* ========== Responsive Styles ========== */

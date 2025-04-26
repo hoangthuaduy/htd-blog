@@ -7,23 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTD Blog</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="assets/logo.svg" alt="HTD Logo" class="logo-img">
+    <header class="d-flex flex-wrap justify-content-between align-items-center p-3 mb-4 border-bottom bg-dark">
+        <div class="logo text-white">
+            <img src="assets/logo-htd.svg" alt="HTD Logo" class="logo-img">
         </div>
         <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="nav">
+                <li class="nav-item"><a href="#about" class="nav-link text-white">About</a></li>
+                <li class="nav-item"><a href="#blog" class="nav-link text-white">Blog</a></li>
+                <li class="nav-item"><a href="#videos" class="nav-link text-white">Videos</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link text-white">Contact</a></li>
             </ul>
         </nav>
     </header>
+
 
     <section id="hero">
         <h1>Welcome to HTD Blog</h1>
@@ -38,27 +44,46 @@
 
     <section id="blog">
         <h2>Blog</h2>
-        <div class="blog-container">
-            <div class="blog-post">
-                <h3>Giới thiệu cơ bản về SAP ABAP</h3>
-                <p>ABAP là ngôn ngữ lập trình cốt lõi của hệ thống SAP ERP. Bài viết này sẽ giúp bạn nắm bắt những kiến
-                    thức cơ bản đầu tiên...</p>
-                <a href="#" class="read-more">Read More</a>
-            </div>
+        <div class="container my-5">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Giới thiệu cơ bản về SAP ABAP</h5>
+                            <p class="card-text">ABAP là ngôn ngữ lập trình cốt lõi của hệ thống SAP ERP...</p>
+                            <a href="pages/blogs/blog-post.html?id=1" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="blog-post">
-                <h3>5 Tips để code ABAP clean và hiệu quả</h3>
-                <p>Viết code ABAP sạch và dễ bảo trì là một kỹ năng quan trọng. Cùng khám phá 5 mẹo nhỏ giúp bạn cải
-                    thiện trình độ lập trình...</p>
-                <a href="#" class="read-more">Read More</a>
-            </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">5 Tips để code ABAP clean và hiệu quả</h5>
+                            <p class="card-text">Viết code ABAP sạch và dễ bảo trì là một kỹ năng quan trọng. Cùng khám
+                                phá 5 mẹo nhỏ giúp bạn cải
+                                thiện trình độ lập trình...</p>
+                            <a href="pages/blogs/blog-post.html?id=2" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="blog-post">
-                <h3>Unit Test trong ABAP: Hướng dẫn chi tiết</h3>
-                <p>Unit Test giúp kiểm thử chương trình ABAP tự động. Bài viết này hướng dẫn cách tạo, chạy và tối ưu
-                    hóa Unit Test cho ABAP...</p>
-                <a href="#" class="read-more">Read More</a>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Unit Test trong ABAP: Hướng dẫn chi tiết</h5>
+                            <p class="card-text">Unit Test giúp kiểm thử chương trình ABAP tự động. Bài viết này hướng
+                                dẫn cách tạo, chạy và tối ưu
+                                hóa Unit Test cho ABAP...</p>
+                            <a href="pages/blogs/blog-post.html?id=3" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thêm nhiều bài viết tương tự -->
             </div>
+        </div>
+
         </div>
     </section>
 
@@ -81,6 +106,9 @@
     <footer>
         <p>&copy; 2025 HTD Blog. All rights reserved.</p>
     </footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="js/script.js"></script>
 </body>

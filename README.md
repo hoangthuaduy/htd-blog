@@ -20,7 +20,7 @@ Chào mừng bạn đến với HTD Blog!
 - Hosted by GitHub Pages
 
 🌟 **Xem website tại đây:**
-👉 [https://github.com/hoangthuaduy/htd-blog]
+👉 [https://hoangthuaduy.github.io/htd-blog/]
 
 🌟 **Kế hoạch phát triển tương lai:**
 - Thêm bài viết chia sẻ SAP ABAP chi tiết hơn.

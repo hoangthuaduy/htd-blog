@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: "assets/images/uploads" # Thư mục lưu ảnh thực tế trong repo
-public_folder: "/images/uploads" # Đường public cho ảnh
+public_folder: "/assets/images/uploads" # Đường public cho ảnh
 
 collections:
   - name: "blog"

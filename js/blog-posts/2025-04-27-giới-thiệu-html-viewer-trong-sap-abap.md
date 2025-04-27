@@ -1,13 +1,13 @@
 ---
 title: Giới thiệu HTML Viewer trong SAP ABAP
 date: 2025-04-27T02:08:01.339Z
-thumbnail: /images/public/screenshot-2025-04-27-091055.png
+thumbnail: /images/uploads/screenshot-2025-04-27-091055.png
 ---
 ## Giới thiệu
 
 HTML Viewer là công cụ tuyệt vời giúp hiển thị nội dung HTML trong SAP ABAP.
 
-![Test ALT Text](/images/public/screenshot-2025-04-27-091055.png "Test Title")
+![Test ALT Text](/images/uploads/screenshot-2025-04-27-091055.png "Test Title")
 
 ## Các cách sử dụng
 

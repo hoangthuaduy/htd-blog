@@ -14,6 +14,10 @@
 
     <!-- Your custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/gray-matter@4.0.3/dist/gray-matter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 </head>
 
 <body>
@@ -59,47 +63,12 @@
         </div>
     </section>
 
-    <section id="blog" class="py-5 bg-dark">
-        <div class="container my-5 text-center">
-            <h2>Blog</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-white h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Giới thiệu cơ bản về SAP ABAP</h5>
-                            <p class="card-text">ABAP là ngôn ngữ lập trình cốt lõi của hệ thống SAP ERP...</p>
-                            <a href="pages/blogs/blog-post.html?id=1" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-white h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">5 Tips để code ABAP clean và hiệu quả</h5>
-                            <p class="card-text">Viết code ABAP sạch và dễ bảo trì là một kỹ năng quan trọng. Cùng khám
-                                phá 5 mẹo nhỏ giúp bạn cải
-                                thiện trình độ lập trình...</p>
-                            <a href="pages/blogs/blog-post.html?id=2" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-white h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Unit Test trong ABAP: Hướng dẫn chi tiết</h5>
-                            <p class="card-text">Unit Test giúp kiểm thử chương trình ABAP tự động. Bài viết này hướng
-                                dẫn cách tạo, chạy và tối ưu
-                                hóa Unit Test cho ABAP...</p>
-                            <a href="pages/blogs/blog-post.html?id=4" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Thêm nhiều bài viết tương tự -->
+    <section id="blog">
+        <div class="container py-5">
+            <h2 class="text-center">Blog</h2>
+            <div id="blog-list" class="row mt-4">
+                <!-- Bài viết tự động load vào đây -->
             </div>
-        </div>
-
         </div>
     </section>
 

@@ -16,3 +16,6 @@ window.addEventListener('load', function() {
         document.getElementById('post-content').innerHTML = "<p>Vui lòng quay lại trang Blog để chọn bài viết hợp lệ.</p>";
     }
 });
+
+
+  

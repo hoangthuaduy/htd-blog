@@ -65,3 +65,7 @@ async function loadBlogPosts() {
         blogContainer.innerHTML += postHTML;
     });
 }
+
+window.addEventListener('load', function () {
+    loadBlogPosts();
+});

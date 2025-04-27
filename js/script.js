@@ -53,13 +53,15 @@ async function loadBlogPosts() {
         const excerpt = postData.body.substring(0, 200) + '...';
 
         const postHTML = `
-        <div class="card bg-dark text-white mb-4">
-          <img src="${thumbnail}" class="card-img-top" alt="${title}">
-          <div class="card-body">
-            <h5 class="card-title">${title}</h5>
-            <p class="card-text">${excerpt}</p>
-            <a href="pages/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary">Đọc tiếp</a>
-          </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark text-white h-100">
+            <img src="${thumbnail}" class="card-img-top" alt="${title}">
+            <div class="card-body">
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text">${excerpt}</p>
+                <a href="pages/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary">Đọc tiếp</a>
+            </div>
+            </div>
         </div>
       `;
         blogContainer.innerHTML += postHTML;

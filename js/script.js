@@ -43,14 +43,14 @@ async function loadBlogPosts() {
         const postRes = await fetch('js/blog-posts/' + file);
         const postText = await postRes.text();
 
-        const postData = matter(postText); // parse frontmatter
-        const content = marked(postData.content); // parse markdown content
+        const postData = parseFrontMatter(postText);
+        const content = marked.parse(postData.body); // parse markdown to HTML
 
-        const title = postData.data.title;
-        const date = postData.data.date;
-        const thumbnail = postData.data.thumbnail || "assets/images/default-thumbnail.jpg"; // fallback nếu chưa có thumbnail
+        const title = postData.attributes.title;
+        const date = postData.attributes.date;
+        const thumbnail = postData.attributes.thumbnail || "assets/images/default-thumbnail.jpg";
 
-        const excerpt = postData.content.substring(0, 200) + '...'; // Tóm tắt nhanh
+        const excerpt = postData.body.substring(0, 200) + '...';
 
         const postHTML = `
         <div class="card bg-dark text-white mb-4">
@@ -64,6 +64,27 @@ async function loadBlogPosts() {
       `;
         blogContainer.innerHTML += postHTML;
     });
+}
+
+// Tự viết hàm parseFrontMatter như đã thống nhất
+function parseFrontMatter(markdown) {
+    const frontmatterRegex = /^---\s*([\s\S]*?)\s*---\s*/;
+    const match = markdown.match(frontmatterRegex);
+
+    if (!match) {
+        return { attributes: {}, body: markdown };
+    }
+
+    const frontmatter = match[1];
+    const body = markdown.slice(match[0].length);
+
+    const attributes = {};
+    frontmatter.split('\n').forEach(line => {
+        const [key, ...value] = line.split(':');
+        attributes[key.trim()] = value.join(':').trim();
+    });
+
+    return { attributes, body };
 }
 
 window.addEventListener('load', function () {

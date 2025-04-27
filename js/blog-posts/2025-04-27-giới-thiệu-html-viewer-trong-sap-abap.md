@@ -1,6 +1,7 @@
 ---
 title: Giới thiệu HTML Viewer trong SAP ABAP
 date: 2025-04-27T02:08:01.339Z
+thumbnail: /images/public/screenshot-2025-04-27-091055.png
 ---
 ## Giới thiệu
 

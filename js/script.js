@@ -50,7 +50,8 @@ async function loadBlogPosts() {
         const date = postData.attributes.date;
         const thumbnail = postData.attributes.thumbnail || "assets/images/default-thumbnail.jpg";
 
-        const excerpt = postData.body.substring(0, 200) + '...';
+        // const excerpt = postData.body.substring(0, 120) + '...';
+        const excerpt = content.substring(0, 120) + '...';
 
         const postHTML = `
         <div class="col-md-6 col-lg-4">

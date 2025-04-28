@@ -41,20 +41,13 @@ async function loadBlogPost() {
         const postData = parseFrontMatter(text);
         const title = postData.attributes.title || "Không tiêu đề";
         const date = postData.attributes.date || "";
-        // marked.setOptions({
-        //     highlight: function (code, lang) {
-        //         const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-        //         return hljs.highlight(code, { language }).value;
-        //     }
-        // });
         const bodyHTML = marked.parse(postData.body);
 
         document.getElementById('post-title').innerText = title;
         document.getElementById('post-date').innerText = date;
         document.getElementById('post-content').innerHTML = bodyHTML;
 
-        hljs.registerLanguage('abap', window.hljsDefineSAP_ABAP);
-        hljs.registerLanguage('language-abap', window.hljsDefineSAP_ABAP);
+        // hljs.registerLanguage('abap', window.hljsDefineSAP_ABAP);
 
         hljs.highlightAll(); // <- tô màu syntax sau khi render xong
     } catch (error) {

@@ -274,10 +274,13 @@ HTML Viewer là công cụ tuyệt vời giúp hiển thị nội dung HTML tron
    window.addEventListener('load', function () {
        loadBlogPosts();
    });
-
    ```
 3. Đọc file HTML từ Application Server.
-
+```abap
+DATA lv_name TYPE string.
+lv_name = 'HTD Blog'.
+WRITE: / lv_name.
+```
 ## Kết luận
 
 Việc chọn phương pháp đúng sẽ giúp giao diện SAP thêm sinh động và dễ bảo trì.

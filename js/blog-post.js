@@ -53,6 +53,9 @@ async function loadBlogPost() {
         document.getElementById('post-date').innerText = date;
         document.getElementById('post-content').innerHTML = bodyHTML;
 
+        hljs.registerLanguage('abap', window.hljsDefineSAP_ABAP);
+        hljs.registerLanguage('language-abap', window.hljsDefineSAP_ABAP);
+
         hljs.highlightAll(); // <- tô màu syntax sau khi render xong
     } catch (error) {
         console.error(error);

@@ -33,6 +33,21 @@ ScrollReveal().reveal('section', {
     reset: false
 });
 
+function stripMarkdown(markdownText) {
+    return markdownText
+        .replace(/!\[.*?\]\(.*?\)/g, '')       // remove images
+        .replace(/\[.*?\]\(.*?\)/g, '')         // remove links
+        .replace(/(\*\*|__)(.*?)\1/g, '$2')     // bold
+        .replace(/(\*|_)(.*?)\1/g, '$2')        // italic
+        .replace(/~~(.*?)~~/g, '$1')            // strikethrough
+        .replace(/`([^`]+)`/g, '$1')            // inline code
+        .replace(/^>\s+/gm, '')                 // blockquotes
+        .replace(/^#+\s+/gm, '')                // headings
+        .replace(/-\s+/g, '')                   // list item
+        .replace(/\n+/g, ' ')                   // newlines
+        .trim();
+}
+
 async function loadBlogPosts() {
     const res = await fetch('js/blog-posts/index.json');
     const files = await res.json();
@@ -44,14 +59,14 @@ async function loadBlogPosts() {
         const postText = await postRes.text();
 
         const postData = parseFrontMatter(postText);
-        const content = marked.parse(postData.body); // parse markdown to HTML
+        // /const content = marked.parse(postData.body); // parse markdown to HTML
 
         const title = postData.attributes.title;
-        const date = postData.attributes.date;
+        //const date = postData.attributes.date;
         const thumbnail = postData.attributes.thumbnail || "assets/images/default-thumbnail.jpg";
 
-        const excerpt = postData.body.substring(0, 120) + '...';
-        // const excerpt = content.substring(0, 120) + '...';
+        const plainText = stripMarkdown(postData.body);
+        const excerpt = plainText.substring(0, 120) + '...';
 
         const postHTML = `
         <div class="col-md-6 col-lg-4">

@@ -75,7 +75,7 @@ async function loadBlogPosts() {
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>
                 <p class="card-text">${excerpt}</p>
-                <a href="pages/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary">Đọc tiếp</a>
+                <a href="pages/blogs/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary">Đọc tiếp</a>
             </div>
             </div>
         </div>

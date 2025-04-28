@@ -35,7 +35,7 @@ function getQueryParam(param) {
     }
   
     try {
-      const res = await fetch('../js/blog-posts/' + decodeURIComponent(id));
+      const res = await fetch('../../js/blog-posts/' + decodeURIComponent(id));
       const text = await res.text();
   
       const postData = parseFrontMatter(text);

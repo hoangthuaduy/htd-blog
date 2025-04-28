@@ -147,6 +147,10 @@ footer {
     object-fit: cover;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.card-img-top:hover {
+    transform: scale(1.05); /* Phóng to nhẹ 5% */
 }
 
 /* ========== Responsive Styles ========== */

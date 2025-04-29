@@ -37,7 +37,8 @@ nav a {
 
 section {
     padding: 2rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* đường viền trắng mờ nhẹ */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* đường viền trắng mờ nhẹ */
 }
 
 .video-container {
@@ -51,10 +52,12 @@ footer {
     background: #222;
     font-size: 0.9rem;
 }
+
 .logo-img {
     width: 40px;
     height: 40px;
 }
+
 #hero {
     text-align: center;
     padding: 4rem 1rem;
@@ -68,6 +71,7 @@ footer {
     opacity: 1;
     transform: scale(1);
 }
+
 #typing-text {
     font-size: 1.5rem;
     color: #f0f0f0;
@@ -107,17 +111,18 @@ footer {
 .read-more:hover {
     text-decoration: underline;
 }
+
 #blog-detail {
     padding: 4rem 1rem;
 }
 
 #blog-detail .container {
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: auto;
     background: #333;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #blog-detail h1 {
@@ -131,6 +136,15 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+#post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 .back-button {
     display: inline-block;
     margin-top: 2rem;
@@ -141,16 +155,20 @@ footer {
 .back-button:hover {
     text-decoration: underline;
 }
+
 .card-img-top {
     width: 100%;
-    height: 200px; /* hoặc 180px nếu bạn muốn thumbnail nhỏ hơn */
+    height: 200px;
+    /* hoặc 180px nếu bạn muốn thumbnail nhỏ hơn */
     object-fit: cover;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
 .card-img-top:hover {
-    transform: scale(1.05); /* Phóng to nhẹ 5% */
+    transform: scale(1.05);
+    /* Phóng to nhẹ 5% */
 }
 
 /* ========== Responsive Styles ========== */

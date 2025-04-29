@@ -1,0 +1,31 @@
+name: Generate Blog Index
+
+on:
+  push:
+    paths:
+      - 'js/blog-posts/*.md'  # Chỉ trigger khi file .md trong blog-posts thay đổi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Generate index.json
+      run: |
+        node generate-index.js
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add js/blog-posts/index.json
+        git commit -m "chore: auto-update index.json via GitHub Actions" || echo "No changes to commit"
+        git push

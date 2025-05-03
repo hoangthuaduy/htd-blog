@@ -54,11 +54,31 @@ function stripMarkdown(markdownText) {
         .trim();
 }
 
+function parseFrontMatter(markdown) {
+    const frontmatterRegex = /^---\s*([\s\S]*?)\s*---\s*/;
+    const match = markdown.match(frontmatterRegex);
+
+    if (!match) {
+        return { attributes: {}, body: markdown };
+    }
+
+    const frontmatter = match[1];
+    const body = markdown.slice(match[0].length);
+
+    const attributes = {};
+    frontmatter.split('\n').forEach(line => {
+        const [key, ...value] = line.split(':');
+        attributes[key.trim()] = value.join(':').trim();
+    });
+
+    return { attributes, body };
+}
+
 async function loadHomeBlogPosts() {
     const container = document.getElementById('home-blog-list');
     if (!container) return;
 
-    // try {
+    try {
         const res = await fetch('js/blog-posts/index.json');
         const files = await res.json();
 
@@ -92,9 +112,9 @@ async function loadHomeBlogPosts() {
             container.innerHTML += blogHTML;
         }
 
-    // } catch (error) {
-    //     console.error('Lỗi khi tải bài viết gần đây:', error);
-    // }
+    } catch (error) {
+        console.error('Lỗi khi tải bài viết gần đây:', error);
+    }
 }
 
 window.addEventListener('load', loadHomeBlogPosts);

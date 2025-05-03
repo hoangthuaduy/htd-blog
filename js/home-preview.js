@@ -39,38 +39,50 @@ function startTypingSequence() {
 
 document.addEventListener("DOMContentLoaded", startTypingSequence);
 
-async function loadRecentBlogs() {
-    const container = document.getElementById('home-blog-preview');
-    const res = await fetch('js/blog-posts/index.json');
-    const files = await res.json();
-    const latest = files.slice(-3).reverse();
+async function loadHomeBlogPosts() {
+    const container = document.getElementById('home-blog-list');
+    if (!container) return;
 
-    for (let file of latest) {
-        const base = file.replace('.md', '');
-        const title = decodeURIComponent(base.replace(/-/g, ' '));
-        const link = `pages/blog-post.html?id=${encodeURIComponent(file)}`;
-        //     container.innerHTML += `
-        //     <div class="col-md-4 mb-3">
-        //       <div class="card h-100 bg-secondary text-light">
-        //         <div class="card-body">
-        //           <h5 class="card-title">${title}</h5>
-        //           <a href="${link}" class="btn btn-primary">Đọc tiếp</a>
-        //         </div>
-        //       </div>
-        //     </div>
-        //   `;
-        container.innerHTML += `
-        <div class="col-md-6 col-lg-4">
-            <div class="card bg-dark text-white h-100">
-            <img src="${thumbnail}" class="card-img-top" alt="${title}">
-            <div class="card-body">
+    try {
+        const res = await fetch('js/blog-posts/index.json');
+        const files = await res.json();
+
+        // Lấy 3 bài mới nhất (tên file thường dạng yyyy-mm-dd-title.md)
+        const latestFiles = files
+            .sort((a, b) => b.localeCompare(a)) // sort theo tên giảm dần
+            .slice(0, 3);
+
+        for (const file of latestFiles) {
+            const postRes = await fetch(`js/blog-posts/${file}`);
+            const postText = await postRes.text();
+
+            const postData = matter(postText);
+            const title = postData.data.title || file.replace('.md', '');
+            const thumbnail = postData.data.thumbnail || 'assets/images/default-thumbnail.jpg';
+            const content = marked.parse(postData.content);
+            const excerpt = postData.content
+                .replace(/[#>*_`[\]!\(\)]/g, '')     // loại markdown
+                .substring(0, 160).trim() + '...';
+
+            const blogHTML = `
+          <div class="col-md-4 mb-4">
+            <div class="card bg-secondary text-light h-100">
+              <img src="${thumbnail}" class="card-img-top" alt="${title}">
+              <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${title}</h5>
                 <p class="card-text">${excerpt}</p>
-                <a href="pages/blogs/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary">Đọc tiếp</a>
+                <a href="pages/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary mt-auto">Đọc tiếp</a>
+              </div>
             </div>
-            </div>
-        </div>
+          </div>
         `;
+
+            container.innerHTML += blogHTML;
+        }
+
+    } catch (error) {
+        console.error('Lỗi khi tải bài viết gần đây:', error);
     }
 }
-window.addEventListener('load', loadRecentBlogs);
+
+window.addEventListener('load', loadHomeBlogPosts);

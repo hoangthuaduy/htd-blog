@@ -58,7 +58,7 @@ async function loadHomeBlogPosts() {
     const container = document.getElementById('home-blog-list');
     if (!container) return;
 
-    try {
+    // try {
         const res = await fetch('js/blog-posts/index.json');
         const files = await res.json();
 
@@ -92,9 +92,9 @@ async function loadHomeBlogPosts() {
             container.innerHTML += blogHTML;
         }
 
-    } catch (error) {
-        console.error('Lỗi khi tải bài viết gần đây:', error);
-    }
+    // } catch (error) {
+    //     console.error('Lỗi khi tải bài viết gần đây:', error);
+    // }
 }
 
 window.addEventListener('load', loadHomeBlogPosts);

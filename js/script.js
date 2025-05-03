@@ -79,7 +79,7 @@ async function loadBlogPosts() {
             </div>
             </div>
         </div>
-      `;
+        `;
         blogContainer.innerHTML += postHTML;
     });
 }

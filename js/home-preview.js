@@ -39,6 +39,21 @@ function startTypingSequence() {
 
 document.addEventListener("DOMContentLoaded", startTypingSequence);
 
+function stripMarkdown(markdownText) {
+    return markdownText
+        .replace(/!\[.*?\]\(.*?\)/g, '')       // remove images
+        .replace(/\[.*?\]\(.*?\)/g, '')         // remove links
+        .replace(/(\*\*|__)(.*?)\1/g, '$2')     // bold
+        .replace(/(\*|_)(.*?)\1/g, '$2')        // italic
+        .replace(/~~(.*?)~~/g, '$1')            // strikethrough
+        .replace(/`([^`]+)`/g, '$1')            // inline code
+        .replace(/^>\s+/gm, '')                 // blockquotes
+        .replace(/^#+\s+/gm, '')                // headings
+        .replace(/-\s+/g, '')                   // list item
+        .replace(/\n+/g, ' ')                   // newlines
+        .trim();
+}
+
 async function loadHomeBlogPosts() {
     const container = document.getElementById('home-blog-list');
     if (!container) return;
@@ -56,27 +71,24 @@ async function loadHomeBlogPosts() {
             const postRes = await fetch(`js/blog-posts/${file}`);
             const postText = await postRes.text();
 
-            const postData = matter(postText);
+            const postData = parseFrontMatter(postText);
             const title = postData.data.title || file.replace('.md', '');
             const thumbnail = postData.data.thumbnail || 'assets/images/default-thumbnail.jpg';
-            const content = marked.parse(postData.content);
-            const excerpt = postData.content
-                .replace(/[#>*_`[\]!\(\)]/g, '')     // loại markdown
-                .substring(0, 160).trim() + '...';
+            const plainText = stripMarkdown(postData.body);
+            const excerpt = plainText.substring(0, 120) + '...';
 
             const blogHTML = `
-          <div class="col-md-4 mb-4">
-            <div class="card bg-secondary text-light h-100">
-              <img src="${thumbnail}" class="card-img-top" alt="${title}">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${title}</h5>
-                <p class="card-text">${excerpt}</p>
-                <a href="pages/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary mt-auto">Đọc tiếp</a>
-              </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-secondary text-light h-100">
+                <img src="${thumbnail}" class="card-img-top" alt="${title}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">${title}</h5>
+                    <p class="card-text">${excerpt}</p>
+                    <a href="pages/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary mt-auto">Đọc tiếp</a>
+                </div>
+                </div>
             </div>
-          </div>
-        `;
-
+            `;
             container.innerHTML += blogHTML;
         }
 

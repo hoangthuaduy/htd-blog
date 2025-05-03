@@ -92,8 +92,8 @@ async function loadHomeBlogPosts() {
             const postText = await postRes.text();
 
             const postData = parseFrontMatter(postText);
-            const title = postData.data.title || file.replace('.md', '');
-            const thumbnail = postData.data.thumbnail || 'assets/images/default-thumbnail.jpg';
+            const title = postData.attributes.title || file.replace('.md', '');
+            const thumbnail = postData.attributes.thumbnail || 'assets/images/default-thumbnail.jpg';
             const plainText = stripMarkdown(postData.body);
             const excerpt = plainText.substring(0, 120) + '...';
 

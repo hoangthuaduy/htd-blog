@@ -49,16 +49,28 @@ async function loadRecentBlogs() {
         const base = file.replace('.md', '');
         const title = decodeURIComponent(base.replace(/-/g, ' '));
         const link = `pages/blog-post.html?id=${encodeURIComponent(file)}`;
+        //     container.innerHTML += `
+        //     <div class="col-md-4 mb-3">
+        //       <div class="card h-100 bg-secondary text-light">
+        //         <div class="card-body">
+        //           <h5 class="card-title">${title}</h5>
+        //           <a href="${link}" class="btn btn-primary">Đọc tiếp</a>
+        //         </div>
+        //       </div>
+        //     </div>
+        //   `;
         container.innerHTML += `
-        <div class="col-md-4 mb-3">
-          <div class="card h-100 bg-secondary text-light">
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-dark text-white h-100">
+            <img src="${thumbnail}" class="card-img-top" alt="${title}">
             <div class="card-body">
-              <h5 class="card-title">${title}</h5>
-              <a href="${link}" class="btn btn-primary">Đọc tiếp</a>
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text">${excerpt}</p>
+                <a href="pages/blogs/blog-post.html?id=${encodeURIComponent(file)}" class="btn btn-primary">Đọc tiếp</a>
             </div>
-          </div>
+            </div>
         </div>
-      `;
+        `;
     }
 }
 window.addEventListener('load', loadRecentBlogs);

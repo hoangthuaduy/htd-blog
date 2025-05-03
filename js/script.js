@@ -63,7 +63,7 @@ async function loadBlogPosts() {
 
         const title = postData.attributes.title;
         //const date = postData.attributes.date;
-        const thumbnail = postData.attributes.thumbnail || "assets/images/default-thumbnail.jpg";
+        const thumbnail = postData.attributes.thumbnail || "assets/images/thumbnail-default.jpg";
 
         const plainText = stripMarkdown(postData.body);
         const excerpt = plainText.substring(0, 120) + '...';

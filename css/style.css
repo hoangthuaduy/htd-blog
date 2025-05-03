@@ -41,6 +41,27 @@ section {
     /* đường viền trắng mờ nhẹ */
 }
 
+#introCarousel {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-item {
+    height: 100%;
+    min-height: 300px;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.carousel-item>div.container {
+    padding: 3rem 1rem;
+}
+
+.carousel-item.d-flex {
+    justify-content: center;
+    flex-direction: column;
+}
+
 .video-container {
     display: flex;
     justify-content: center;
